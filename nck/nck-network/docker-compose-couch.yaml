@@ -142,7 +142,7 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=
     depends_on:
-      - couchdb44
+      - couchdb4
 
   couchdb5:
     container_name: couchdb5

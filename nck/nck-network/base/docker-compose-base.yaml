@@ -33,6 +33,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.warehouse.nck.com:8051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.warehouse.nck.com:7051
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
       - CORE_PEER_LOCALMSPID=WarehouseMSP
     volumes:
         - /var/run/:/host/var/run/
@@ -55,6 +56,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.warehouse.nck.com:8051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.warehouse.nck.com:7051
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
       - CORE_PEER_LOCALMSPID=WarehouseMSP
     volumes:
         - /var/run/:/host/var/run/
@@ -78,6 +80,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.supplier.nck.com:9051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.supplier.nck.com:10051
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
       - CORE_PEER_LOCALMSPID=SupplierMSP
     volumes:
         - /var/run/:/host/var/run/
@@ -100,6 +103,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10052
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.supplier.nck.com:10051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.supplier.nck.com:9051
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
       - CORE_PEER_LOCALMSPID=SupplierMSP
     volumes:
         - /var/run/:/host/var/run/
@@ -122,6 +126,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10152
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.issuer.nck.com:10151
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.issuer.nck.com:10251
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
       - CORE_PEER_LOCALMSPID=IssuerMSP
     volumes:
         - /var/run/:/host/var/run/
@@ -144,6 +149,7 @@ services:
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:10252
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.issuer.nck.com:10251
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.issuer.nck.com:10151
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
       - CORE_PEER_LOCALMSPID=IssuerMSP
     volumes:
         - /var/run/:/host/var/run/

@@ -90,6 +90,7 @@ services:
       - CORE_PEER_ADDRESS=peer0.warehouse.nck.com:7051
       - CORE_PEER_LOCALMSPID=WarehouseMSP
       - CORE_PEER_TLS_ENABLED=true
+      - CORE_CHAINCODE_EXECUTETIMEOUT=300s
       - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/warehouse.nck.com/peers/peer0.warehouse.nck.com/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/warehouse.nck.com/peers/peer0.warehouse.nck.com/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/warehouse.nck.com/peers/peer0.warehouse.nck.com/tls/ca.crt

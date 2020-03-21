@@ -69,10 +69,9 @@ export CHANNEL_NAME=nckchannel
 
 echo "pull latest images for the cli"
 sleep 10
-docker-compose -f docker-compose-cli.yaml up -d
-sleep 30
-docker-compose -f docker-compose-couch.yaml up -d
-sleep 60
+docker-compose -f docker-compose-cli.yaml -f docker-compose-couch.yaml up -d
+
+sleep 100
 readiness_probe
 
 export WAREHOUSE_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/warehouse.nck.com/users/Admin@warehouse.nck.com/msp
