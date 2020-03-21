@@ -1,4 +1,7 @@
 credentials:
   user: adam
-  userName: 'Admin@issuer.nck.com'
+  userName: Admin@issuer.nck.com
 
+query:
+  queryType: queryBatchByBlock
+  queryString: 0

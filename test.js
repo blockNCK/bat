@@ -27,10 +27,10 @@ async function main () {
         var user=configProfile.credentials.user;
 
         // A wallet stores a collection of identities for use
-        const wallet = new FileSystemWallet(`../identity/user/${user}/wallet`);
+        const wallet = new FileSystemWallet(`../identity/user/adam/wallet`);
 
         // Specify userName for network access
-        const userName = configProfile.credentials.userName;
+        const userName = 'Admin@issuer.nck.com';
 
         // Set connection options; identity and wallet
         let connectionOptions = {
@@ -40,12 +40,11 @@ async function main () {
 
         };
 
-        const queryType = configProfile.query.queryType;
-        const queryString = configProfile.query.queryString;
+
         await gateway.connect(connectionProfile, connectionOptions);
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
-        const buyResponse = await contract.submitTransaction(queryType, queryString);
+        const buyResponse = await contract.submitTransaction('queryBatchByBlock', '0');
         console.log(buyResponse);
 
     } catch (error) {
