@@ -27,7 +27,7 @@ async function main () {
         var user=configProfile.credentials.user;
 
         // A wallet stores a collection of identities for use
-        const wallet = new FileSystemWallet(`identity/user/adam/wallet`);
+        const wallet = new FileSystemWallet(`../identity/user/adam/wallet`);
 
         // Specify userName for network access
         const userName = 'Admin@issuer.nck.com';
