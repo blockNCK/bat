@@ -69,7 +69,7 @@ orderers:
   orderer.nck.com:
     url: grpcs://localhost:7050
     tlsCACerts:
-      path: ../nck/nck-network/crypto-config/ordererOrganizations/nck.com/tlsca/tlsca.nck.com-cert.pem
+      path: ../bat/nck/nck-network/crypto-config/ordererOrganizations/nck.com/tlsca/tlsca.nck.com-cert.pem
     grpcOptions:
       ssl-target-name-override: orderer.nck.com
 
@@ -93,7 +93,7 @@ peers:
   peer0.supplier.nck.com:
     url: grpcs://localhost:9051
     tlsCACerts:
-      path: ../../nck-network/crypto-config/peerOrganizations/supplier.nck.com/tlsca/tlsca.supplier.nck.com-cert.pem
+      path: ../bat/nck/nck-network/crypto-config/peerOrganizations/supplier.nck.com/tlsca/tlsca.supplier.nck.com-cert.pem
     grpcOptions:
       ssl-target-name-override: peer0.supplier.nck.com
       request-timeout: 120001
@@ -101,7 +101,7 @@ peers:
   peer1.supplier.nck.com:
     url: grpcs://localhost:10051
     tlsCACerts:
-      path: ../../nck-network/crypto-config/peerOrganizations/supplier.nck.com/tlsca/tlsca.supplier.nck.com-cert.pem
+      path: ../bat/nck/nck-network/crypto-config/peerOrganizations/supplier.nck.com/tlsca/tlsca.supplier.nck.com-cert.pem
     grpcOptions:
       ssl-target-name-override: peer1.supplier.nck.com
       request-timeout: 120001
