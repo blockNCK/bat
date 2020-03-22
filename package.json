@@ -4,8 +4,7 @@
     "description": "",
     "main": "authenticate.js",
     "scripts": {
-        "lint": "eslint .",
-        "test": "rm -rf _idwallet && node addToWallet.js && node readBatch.js"
+        "lint": "eslint ."
     },
     "keywords": [],
     "author": "",
