@@ -30,7 +30,7 @@ async function main () {
         const wallet = new FileSystemWallet(`./nck/application/identity/user/adam/wallet/`);
 
         // Specify userName for network access
-        const userName = 'Admin@issuer.nck.com';
+        const userName = 'Admin@supplier.nck.com';
 
         // Set connection options; identity and wallet
         let connectionOptions = {
