@@ -45,7 +45,7 @@ async function main () {
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
         const buyResponse = await contract.submitTransaction('queryBatchByBlock', '0');
-        console.log(buyResponse);
+        console.log(JSON.stringify(buyResponse));
 
     } catch (error) {
 
