@@ -9,7 +9,7 @@ const fs = require('fs');
 const { FileSystemWallet, X509WalletMixin } = require('fabric-network');
 const path = require('path');
 
-const fixtures = path.resolve(__dirname, '../../nck-network');
+const fixtures = path.resolve(__dirname, '../nck/nck-network');
 
 // A wallet stores a collection of identities
 const wallet = new FileSystemWallet('../identity/user/adam/wallet');
