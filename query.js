@@ -46,7 +46,7 @@ async function main () {
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
         const buyResponse = await contract.submitTransaction(queryType, queryString);
-        console.log(buyResponse.toString());
+        return(buyResponse.toString());
 
     } catch (error) {
 
@@ -54,16 +54,13 @@ async function main () {
         console.log(error.stack);
 
     } finally {
-
-        // Disconnect from the gateway
-        console.log('Disconnect from Fabric gateway.');
         gateway.disconnect();
 
     }
 }
 main().then(() => {
 
-    console.log('Create batch complete.');
+    console.log('Query complete.');
 
 }).catch((e) => {
 
