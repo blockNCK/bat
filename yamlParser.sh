@@ -1,5 +1,5 @@
 #!/bin/sh
-function parse_yaml {
+
    prefix=$2
    s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
    sed -ne "s|^\($s\):|\1|" \
@@ -14,5 +14,5 @@ function parse_yaml {
          printf("%s%s%s=\"%s\"\n", "'$prefix'",vn, $2, $3);
       }
    }'
-}
+
 
