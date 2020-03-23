@@ -4,6 +4,6 @@ credentials:
 
 query:
   queryType: queryBatchByBlock
-  queryString: 0
+  queryString: '0'
 
 database: mongodb
