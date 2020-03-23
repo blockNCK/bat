@@ -13,7 +13,7 @@ echo "--------------------------------------------------------------------------
 echo "                                  Query blockchain using block index                                "
 echo "----------------------------------------------------------------------------------------------------"
 
-results = $(node query.js)
+results=$(node query.js)
 echo $results
 
 readiness_probe
