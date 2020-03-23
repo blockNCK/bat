@@ -25,6 +25,11 @@ async function main () {
         let configProfile = yaml.safeLoad(fs.readFileSync('config.yaml','utf8'));
 
         var user=configProfile.credentials.user;
+        
+        console.log( "---------------------------------------------------------------------------------------------------");
+        console.log( "                                  Invoke wallet services                                           ");
+        console.log("----------------------------------------------------------------------------------------------------");
+
 
         // A wallet stores a collection of identities for use
         const wallet = new FileSystemWallet(`./application/identity/user/${user}/wallet/`);
@@ -43,8 +48,18 @@ async function main () {
         const queryType = configProfile.query.queryType;
         const queryString = configProfile.query.queryString;
         await gateway.connect(connectionProfile, connectionOptions);
+        
+        console.log( "---------------------------------------------------------------------------------------------------");
+        console.log( "                                  Invoke smart contract                                            ");
+        console.log("----------------------------------------------------------------------------------------------------");
+
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
+        
+        console.log( "---------------------------------------------------------------------------------------------------");
+        console.log( "                                  Query using block Index                                          ");
+        console.log("----------------------------------------------------------------------------------------------------");
+
         const buyResponse = await contract.submitTransaction(queryType, queryString);
         console.log(buyResponse.toString());
 
