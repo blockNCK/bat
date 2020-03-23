@@ -60,7 +60,7 @@ async function main () {
 }
 main().then(() => {
 
-    console.log(buyResponse.toString());
+    console.log("finish");
 
 }).catch((e) => {
 
