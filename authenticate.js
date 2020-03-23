@@ -27,7 +27,7 @@ async function main () {
         var user=configProfile.credentials.user;
 
         // A wallet stores a collection of identities for use
-        const wallet = new FileSystemWallet(`../identity/user/${user}/wallet`);
+        const wallet = new FileSystemWallet(`./application/identity/user/${user}/wallet/`);
 
         // Specify userName for network access
         const userName = configProfile.credentials.userName;
@@ -46,7 +46,7 @@ async function main () {
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
         const buyResponse = await contract.submitTransaction(queryType, queryString);
-        console.log(buyResponse);
+        console.log(buyResponse.toString());
 
     } catch (error) {
 
