@@ -46,7 +46,7 @@ async function main () {
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
         const buyResponse = await contract.submitTransaction(queryType, queryString);
-        return(buyResponse.toString());
+        console.log(buyResponse.toString());
 
     } catch (error) {
 
@@ -60,7 +60,7 @@ async function main () {
 }
 main().then(() => {
 
-    console.log(main());
+    console.log();
 
 }).catch((e) => {
 
