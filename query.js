@@ -60,7 +60,7 @@ async function main () {
 }
 main().then(() => {
 
-    console.log("finish");
+    console.log(main());
 
 }).catch((e) => {
 
