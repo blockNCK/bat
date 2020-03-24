@@ -52,6 +52,5 @@ BDC:
 
 analysis:
   type: tensorflow
-  dataset: ["drug_name, supply_date, issued_date, total_quantity"]
+  dataset: "drug_name,supply_date,issued_date,total_quantity"
 
-  
