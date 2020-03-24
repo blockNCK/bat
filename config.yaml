@@ -1,12 +1,57 @@
+################################################################################
+#
+#   Section: Network
+#
+#   - This section defines the network connection of the blockchcain.
+#
+################################################################################
+
+network:
+  channel: nckchannel
+  constract: nckcc
+  connectionProfile: ./gateway/networkConnection.yaml
+  wallet: ./application/identity/user/adam/wallet/
+  organization: supplier
+
 credentials:
   user: adam
   userName: Admin@supplier.nck.com
 
+################################################################################
+#
+#   Section: Block index
+#
+#   - This section defines query needed to be performed. The required set of data
+#     is defined under this section
+#
+################################################################################
 query:
   queryType: queryBatchByBlock
   queryString: '0'
 
-database: 
+################################################################################
+#
+#   Section: Database
+#
+#   - This section defines type of database or storage system used as BDC. The
+#     retrieved data is saved into the BDC through this section.
+#
+################################################################################
+BDC: 
   type: mongodb
   name: nck
   collection: batches
+
+################################################################################
+# 
+#   Section: analysis tool (optional)
+#
+#   - This section defines analysis tool used for the analysis
+#
+################################################################################
+
+analysis:
+  type: tensorflow
+  dataset: ["drug_name, supply_date, issued_date, total_quantity"]
+
+  
