@@ -29,20 +29,22 @@ eval $(./yamlParser.sh config.yaml )
 echo "setup database"
 
 if $database="mongodb"
-  if [[ !$(which mongo) ]]
   then
-  display_msg "Install mongodb\n"
-  sudo apt update
-  sudo apt install -y mongodb
+  if [[ !$(which mongo) ]]
+    then
+    display_msg "Install mongodb\n"
+    sudo apt update
+    sudo apt install -y mongodb
   fi
 fi
 
 if $database="mysql"
-  if [[ !$(which mysql) ]]
   then
-  display_msg "Install mysql\n"
-  sudo apt update
-  sudo apt install mysql-client-core-5.7
+  if [[ !$(which mysql) ]]
+    then
+    display_msg "Install mysql\n"
+    sudo apt update
+    sudo apt install mysql-client-core-5.7
   fi
 fi
 
@@ -59,11 +61,12 @@ node batRun.js
 
 echo "Create the model using the data acquired"
 if $analysis_type="tensorflow"
-  if [[ ! $(which pip) ]]
   then
-  display_msg "Install pip\n"
-  sudo apt update
-  sudo apt install python-pip
+  if [[ ! $(which pip) ]]
+    then
+    display_msg "Install pip\n"
+    sudo apt update
+    sudo apt install python-pip
   fi
 fi
 
