@@ -8,7 +8,7 @@
 
 network:
   channel: nckchannel
-  constract: nckcc
+  contract: nckcc
   connectionProfile: ./gateway/networkConnection.yaml
   wallet: ./application/identity/user/adam/wallet/
   organization: supplier

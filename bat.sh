@@ -28,7 +28,7 @@ eval $(./yamlParser.sh config.yaml )
 
 echo "setup database"
 
-if $database="mongodb"
+if $database = "mongodb"
   then
   if [[ !$(which mongo) ]]
     then
@@ -38,7 +38,7 @@ if $database="mongodb"
   fi
 fi
 
-if $database="mysql"
+if $database = "mysql"
   then
   if [[ !$(which mysql) ]]
     then
@@ -60,7 +60,7 @@ node batRun.js
 #---------------------------------------------------------------------------------------------------
 
 echo "Create the model using the data acquired"
-if $analysis_type="tensorflow"
+if $analysis_type = "tensorflow"
   then
   if [[ ! $(which pip) ]]
     then
