@@ -47,7 +47,8 @@ async function main () {
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
         const buyResponse = await contract.submitTransaction(queryType, queryString);
-        const results = buyResponse.toString();
+        var results = buyResponse.toString();
+        console.log(results[0]);
         console.info(buyResponse.toString());
 
         var MongoClient = require('mongodb').MongoClient;
