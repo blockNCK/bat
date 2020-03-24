@@ -26,10 +26,6 @@ async function main () {
 
         var user=configProfile.credentials.user;
         
-        console.log( "---------------------------------------------------------------------------------------------------");
-        console.log( "                                  Invoke wallet services                                           ");
-        console.log("----------------------------------------------------------------------------------------------------");
-
 
         // A wallet stores a collection of identities for use
         const wallet = new FileSystemWallet(`./application/identity/user/${user}/wallet/`);
@@ -48,22 +44,27 @@ async function main () {
         const queryType = configProfile.query.queryType;
         const queryString = configProfile.query.queryString;
         await gateway.connect(connectionProfile, connectionOptions);
-        
-        console.log( "---------------------------------------------------------------------------------------------------");
-        console.log( "                                  Invoke smart contract                                            ");
-        console.log("----------------------------------------------------------------------------------------------------");
-
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
-        
-        console.log( "---------------------------------------------------------------------------------------------------");
-        console.log( "                                  Query using block Index                                          ");
-        console.log("----------------------------------------------------------------------------------------------------");
-
         const buyResponse = await contract.submitTransaction(queryType, queryString);
-        console.log(buyResponse.toString());
+        console.info(buyResponse.toString());
 
-    } catch (error) {
+        var MongoClient = require('mongodb').MongoClient;
+        var url = "mongodb://localhost:27017/";
+
+        MongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+            const databaseName=configProfile.database.name;
+            const collection = configProfile.database.collection;
+            var dbo = db.db(databaseName);
+            dbo.collection(collection).insertMany(buyResponse, function(err, res) {
+                if (err) throw err;
+                console.log("Number of documents inserted: " + res.insertedCount);
+                db.close();
+            });
+        });
+
+        } catch (error) {
 
         console.log(`Error processing transaction. ${error}`);
         console.log(error.stack);
