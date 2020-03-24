@@ -47,6 +47,7 @@ async function main () {
         const network = await gateway.getNetwork('nckchannel');
         const contract = await network.getContract('nckcc');
         const buyResponse = await contract.submitTransaction(queryType, queryString);
+        const results = buyResponse.toString();
         console.info(buyResponse.toString());
 
         var MongoClient = require('mongodb').MongoClient;
@@ -57,7 +58,7 @@ async function main () {
             const databaseName=configProfile.database.name;
             const collection = configProfile.database.collection;
             var dbo = db.db(databaseName);
-            dbo.collection(collection).insertMany(buyResponse, function(err, res) {
+            dbo.collection(collection).insertMany(results, function(err, res) {
                 if (err) throw err;
                 console.log("Number of documents inserted: " + res.insertedCount);
                 db.close();
