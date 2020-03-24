@@ -43,14 +43,26 @@ async function main () {
 
         const queryType = configProfile.query.queryType;
         const queryString = configProfile.query.queryString;
+
+        console.log("setup the gateway");
+        console.log("network: " + configProfile.network.channel)
         await gateway.connect(connectionProfile, connectionOptions);
+
+        console.log("connect to the network channel");
         const network = await gateway.getNetwork(configProfile.network.channel);
+
+        console.log("invoke smartcontract");
+        console.log("smart contract: " +configProfile.network.contract);        
         const contract = await network.getContract(configProfile.network.contract);
+        
+        console.log("query the blockchain and acquire data");
         const buyResponse = await contract.submitTransaction(queryType, queryString);
         var results = buyResponse.toString();
         var resultsJson = JSON.parse(results)
 
+        console.log("setup the BDC");
         if(configProfile.BDC.type=="mongodb"){ 
+            console.log("database type chosen: " + configProfile.BDC.type);
             var MongoClient = require('mongodb').MongoClient;
             var url = "mongodb://localhost:27017/";
 
