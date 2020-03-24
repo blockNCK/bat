@@ -61,7 +61,7 @@ async function main () {
             const databaseName=configProfile.database.name;
             const collection = configProfile.database.collection;
             var dbo = db.db(databaseName);
-            dbo.collection(collection).insertMany(results, function(err, res) {
+            dbo.collection(collection).insert(results, function(err, res) {
                 if (err) throw err;
                 console.log("Number of documents inserted: " + res.insertedCount);
                 db.close();
