@@ -48,7 +48,7 @@ async function main () {
         const contract = await network.getContract('nckcc');
         const buyResponse = await contract.submitTransaction(queryType, queryString);
         var results = buyResponse.toString();
-        let mappedArray = arrayToMap.map(item => item.el);
+        let mappedArray = results.map(item => item.el);
         console.log(mappedArray[0]);
 
         var MongoClient = require('mongodb').MongoClient;
