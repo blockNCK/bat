@@ -21,13 +21,19 @@ readiness_probe(){
 echo "Read yaml file"
 chmod +x yamlParser.sh
 eval $(./yamlParser.sh config.yaml )
-
+readiness_probe
 #---------------------------------------------------------------------------------------------------
 #                                 Setup database                                                    
 #---------------------------------------------------------------------------------------------------
 
-echo "setup database"
-
+echo "Setup database"
+echo "Choosing the BDC as mysql"
+echo "Mapping the data requested to match with the block index"
+echo "Generate the necessary rules"
+echo "Query the block index and acquire data"
+echo "Process the data using the BAT processor"
+echo "Load the data to the BDC"
+echo "Retrieve data from the BDC "
 if [ "$database" = "mongodb" ]
   then
   if [[ !$(which mongo) ]]
@@ -35,6 +41,7 @@ if [ "$database" = "mongodb" ]
     display_msg "Install mongodb\n"
     sudo apt update
     sudo apt install -y mongodb
+    readiness_probe
   fi
 fi
 
@@ -53,8 +60,8 @@ fi
 #----------------------------------------------------------------------------------------------------
 
 echo "Query blockchain and save files to the database"
-node batRun.js --verbose=true
-
+node batRun.js --verbose=true 1>&3
+readiness_probe
 #---------------------------------------------------------------------------------------------------
 #                      Create the model using the data acquired                                     
 #---------------------------------------------------------------------------------------------------
@@ -67,9 +74,10 @@ if [ $analysis_type = "tensorflow" ]
     display_msg "Install pip\n"
     sudo apt update
     sudo apt install python-pip
+    readiness_probe
   fi
 fi
-
+readiness_probe
 python demandforecast.py
 
 
