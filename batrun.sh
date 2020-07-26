@@ -14,66 +14,64 @@ readiness_probe(){
   sleep 3
 }
 
-readiness_probe_fast(){
-  sleep 1
-}
-
 #---------------------------------------------------------------------------------------------------
 #                                 Read yaml file                                                    
 #---------------------------------------------------------------------------------------------------
 
-echo "Read yaml file and parse parameter values"
+echo "Read yaml file"
 chmod +x yamlParser.sh
-
 eval $(./yamlParser.sh config.yaml )
 readiness_probe
 #---------------------------------------------------------------------------------------------------
 #                                 Setup database                                                    
 #---------------------------------------------------------------------------------------------------
 
-echo "Setup database"
-echo "Choosing the BDC as mongodb"
 
-display_msg "Install mongodb\n"
-sudo apt update
-sudo apt install -y mongodb
-readiness_probe
+if [ "$BDC_type" = "mongodb" ]
+  then
+  if [[ !$(which mongo) ]]
+    then
+    display_msg "Install mongodb\n"
+    sudo apt update
+    sudo apt install -y mongodb
+    readiness_probe
+  fi
+fi
 
+if [ "$database" = "mysql" ]
+  then
+  if [[ !$(which mysql) ]]
+    then
+    display_msg "Install mysql\n"
+    sudo apt update
+    sudo apt install mysql-client-core-5.7
+  fi
+fi
 
 #----------------------------------------------------------------------------------------------------
 #                       Query blockchain and save files to the database                              
 #----------------------------------------------------------------------------------------------------
 
-npm install
-
-echo "Mapping the data requested to match with the block index"
-echo "Generate the necessary rules"
-echo "Query the block index and acquire data"
-readiness_probe_fast
-echo "Process the data using the BAT processor"
-readiness_probe_fast
-echo "Load the data to the BDC"
-readiness_probe_fast
-echo "Retrieve data from the BDC "
-
-node batRun.js 2>&1
+echo "Query blockchain and save files to the database"
+node batRun.js 1>&3
 readiness_probe
 #---------------------------------------------------------------------------------------------------
 #                      Create the model using the data acquired                                     
 #---------------------------------------------------------------------------------------------------
 
 echo "Create the model using the data acquired"
-
-display_msg "Install pip\n"
-sudo apt update
-sudo apt install python-pip
-readiness_probe
-pip install pymongo
-
-
+if [ $analysis_type = "tensorflow" ]
+  then
+  if [[ ! $(which pip) ]]
+    then
+    display_msg "Install pip\n"
+    sudo apt update
+    sudo apt install python-pip
+    readiness_probe
+  fi
+fi
 readiness_probe
 python demandforecast.py
-
 
 
 

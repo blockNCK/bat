@@ -14,3 +14,4 @@ mycol = mydb["batches"]
 
 for x in mycol.find():
   print(json.dumps(x, indent=2,default=str))
+  
