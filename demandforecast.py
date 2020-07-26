@@ -13,5 +13,4 @@ mydb = myclient["nck"]
 mycol = mydb["batches"]
 
 for x in mycol.find():
-  print(x)
   print(json.dumps(x, indent=2,default=str))
