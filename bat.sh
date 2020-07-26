@@ -34,7 +34,7 @@ echo "Query the block index and acquire data"
 echo "Process the data using the BAT processor"
 echo "Load the data to the BDC"
 echo "Retrieve data from the BDC "
-if [ "$database" = "mongodb" ]
+if [ "$BDC_type" = "mongodb" ]
   then
   if [[ !$(which mongo) ]]
     then
