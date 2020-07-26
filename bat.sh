@@ -60,7 +60,7 @@ fi
 #----------------------------------------------------------------------------------------------------
 
 echo "Query blockchain and save files to the database"
-node batRun.js --verbose=true 1>&3
+node batRun.js 1>&3
 readiness_probe
 #---------------------------------------------------------------------------------------------------
 #                      Create the model using the data acquired                                     
