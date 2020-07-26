@@ -14,5 +14,4 @@ mycol = mydb["batches"]
 
 for x in mycol.find():
   print(x)
-  output=json.loads(x)
-  print(output)
+  print(json.dumps(x, indent=2))
